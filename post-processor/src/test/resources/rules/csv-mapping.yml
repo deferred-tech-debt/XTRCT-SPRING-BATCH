@@ -1,0 +1,79 @@
+- csv: Incentive
+  mapping:
+  - csv: VehicleIncentive
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: DeliveryType
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: Institution
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: ProgramRule
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: ValueVariation
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: VehicleStatus
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID
+
+  - csv: Stackability
+    parentColumn: SignatureHistoryID
+    mappingColumn: SignatureHistoryID
+
+  - csv: Stackability
+    parentColumn: SignatureID
+    mappingColumn: ToSignatureID
+
+  - csv: LURegion
+    parentColumn: RegionID
+    mappingColumn: RegionID
+
+- csv: ValueVariation
+  mapping:
+  - csv: ProgramValue
+    parentColumn: ValueVariationID
+    mappingColumn: ValueVariationID
+
+- csv: ProgramValue
+  mapping:
+  - csv: Term
+    parentColumn: ProgramValueID
+    mappingColumn: ProgramValueID
+
+- csv: Term
+  mapping:
+  - csv: MileageRestriction
+    parentColumn: TermID
+    mappingColumn: TermID
+
+- csv: VehicleIncentive
+  mapping:
+  - csv: Vehicle
+    parentColumn: Acode
+    mappingColumn: Acode
+
+- csv: Vehicle
+  mapping:
+  - csv: VehicleStyle
+    parentColumn: Acode
+    mappingColumn: Acode
+
+- csv: LURegion
+  mapping:
+  - csv: RegionDetail
+    parentColumn: RegionID
+    mappingColumn: RegionID
+
+- csv: VehicleStatus
+  mapping:
+  - csv: Incentive
+    parentColumn: IncentiveID
+    mappingColumn: IncentiveID

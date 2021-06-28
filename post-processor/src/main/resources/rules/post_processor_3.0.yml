@@ -1,0 +1,21 @@
+- csv: Version
+  definition:
+    operation: UPDATE_RECORDS
+    updatedValues:
+    - column: Schema Version
+      newValue: 3.0.0
+    criteria:
+    - column: Schema Version
+      condition: LIKE
+      values:
+      - '[.0-9]*'
+
+- csv: Incentive
+  definition:
+    operation: REMOVE_ROWS
+    criteria:
+      - column: Source
+        condition: EQ
+        values:
+          - Financial Institution
+          - Institution financière

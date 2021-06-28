@@ -1,0 +1,47 @@
+- csv: Incentive
+  definition:
+    operation: REMOVE_ROWS
+    criteria:
+    - column: Source
+      condition: EQ
+      values:
+      - Financial Institution
+
+- csv: VehicleStatus
+  definition:
+    operation: REMOVE_ROWS
+    criteria:
+    - column: VehicleStatusID
+      condition: EQ
+      values:
+      - 49
+
+- csv: LUVehicleStatus
+  definition:
+    operation: REMOVE_ROWS
+    criteria:
+    - column: VehicleStatusID
+      condition: EQ
+      values:
+      - 49
+
+- csv: ValueVariation
+  definition:
+    operation: REMOVE_ROWS
+    criteria:
+    - column: ValueVariationID
+      condition: NOT_LIKE
+      values:
+      - '[0-9]*-0'
+
+- csv: Version
+  definition:
+    operation: UPDATE_RECORDS
+    updatedValues:
+    - column: Schema Version
+      newValue: 2.2.0
+    criteria:
+    - column: Schema Version
+      condition: LIKE
+      values:
+      - '3.0.0[.0-9]*'

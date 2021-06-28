@@ -1,0 +1,190 @@
+- csv: DeliveryType
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Type
+
+- csv: Incentive
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - IncentiveID
+    - RegionID
+    - SignatureHistoryID
+    - SignatureID
+    - CategoryID
+    - TaxRuleID
+    - MarketID
+    - GroupAffiliationID
+    - PreviousOwnershipID
+    - EndRecipientID
+
+- csv: Institution
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Institution
+
+- csv: MileageRestriction
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Mileage
+
+- csv: ProgramRule
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - IncentiveID
+
+- csv: ProgramValue
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - ExitingGroup
+    - LeasesExpiringFrom
+    - LeasesExpiringTo
+    - Description
+    - Note
+
+- csv: RegionDetail
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - ZipPostalPattern
+
+- csv: Stackability
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - ComplexLogic
+
+- csv: TaxRule
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Description
+
+- csv: Term
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - ValueType
+    - FinancialDisclosure
+
+- csv: ValueVariation
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - ValueVariationID
+    - IncentiveID
+
+- csv: Vehicle
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - Acode
+    - Country
+    - Year
+
+- csv: VehicleStatus
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Status
+
+- csv: LUCategory
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - CategoryId
+
+- csv: LUDeliveryType
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - DeliveryTypeID
+
+- csv: LUDivision
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - DivisionID
+
+- csv: LUEndRecipient
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - EndRecipientID
+
+- csv: LUGroupAffiliation
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - GroupAffiliationID
+
+- csv: LUIncentiveType
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - IncentiveTypeID
+
+- csv: LUInstitution
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - InstitutionID
+
+- csv: LUMarket
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - MarketID
+
+- csv: LUPreviousOwnership
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - PreviousOwnershipID
+
+- csv: LURegion
+  formats:
+  - type: ENCAPSULATE
+    value: '"'
+    columns:
+    - Description
+
+- csv: LUVehicleStatus
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:
+    - VehicleStatusID
+
+- csv: Version
+  formats:
+  - type: ENCAPSULATE_ELSE
+    value: '"'
+    columns:

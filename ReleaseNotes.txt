@@ -1,0 +1,354 @@
+======================================================
+ Incentives Extract 3.1 Release Notes
+======================================================
+Build 3.1.1.123
+--------------------------------------------
+INCDIS-1191 - Fixed the issue in lower versions version.csv file
+
+Build 3.1.1.122
+--------------------------------------------
+INCDIS-1125 - LTV Adj flag to determine the ltv value type for lease rate
+
+Build 3.1.0.120
+--------------------------------------------
+INCDIS-570 LTV Data in Enterprise Extract
+
+Build 3.0.0.119
+--------------------------------------------
+INCDIS-496 Extract hot Fix to add null check on skipped incentives
+
+Build 3.0.0.118
+--------------------------------------------
+INCDIS-398 Remove mileage value when residual is empty/blank
+
+Build 3.0.0.117
+--------------------------------------------
+INCDIS-398 Remove mileage value when residual is empty or 0.0
+
+Build 3.0.0.116
+--------------------------------------------
+INCDIS-291 Creating test cases
+
+Build 3.0.0.115
+--------------------------------------------
+INCDIS-291 Adding quotes to string literals
+
+Build 3.0.0.114
+--------------------------------------------
+INCDIS-291 Adding quotes to string literals
+INCDIS-360 updating rules to remove records
+
+Build 3.0.0.113
+--------------------------------------------
+INCDIS-291 Fix dependency issues in pom.xml
+
+Build 3.0.0.112
+--------------------------------------------
+INCDIS-291 Fix dependency issues in pom.xml
+
+Build 3.0.0.111
+--------------------------------------------
+INCDIS-291 Fix dependency issues in pom.xml
+
+Build 3.0.0.110
+--------------------------------------------
+INCDIS-291, INCDIS-285 CIS Post Processor with new design
+
+Build 3.0.0.109
+--------------------------------------------
+INCDIS-321 CIS Extract Producing Unexpected Exit Codes Related To Errors
+
+Build 3.0.0.108
+--------------------------------------------
+bad merge, see next build
+
+Build 3.0.0.107
+--------------------------------------------
+INCDIS-311 Fix for error handling in Extract 3.0.0
+
+Build 3.0.0.106
+--------------------------------------------
+INCDIS-305 Fix for error in Extract
+
+Build 3.0.0.105
+--------------------------------------------
+INCDIS-305 Fix for error in Look Up Data
+INCDIS-259 Add other tier data to CIS Extract
+
+Build 3.0.0.104
+--------------------------------------------
+INCDIS-305 Serialization error in Look Up Data
+
+Build 3.0.0.103
+--------------------------------------------
+INCDIS-260 updated log4j version for post-procesor build
+
+Build 3.0.0.102
+--------------------------------------------
+INCDIS-260 Rebuild Spring Pagination build
+
+Build 3.0.0.101
+--------------------------------------------
+INCDIS-260 Create spring boot jar and remove the mileage format warning message
+
+Build 3.0.0.100
+--------------------------------------------
+INCDIS-260 Upgrade Extract to Spring Pagination Batch Job
+
+Build 2.2.0.46
+--------------------------------------------
+INCDIS-91 Add PO NOte and GA NOte to CIS Extract
+INCDIS-215,135 Remove Post Procesor 1.3
+Add Post processor for 2.1
+
+Build 2.1.3.45
+--------------------------------------------
+INCDIS-91 Add PO NOte and GA NOte to CIS Extract
+
+
+Build 2.1.1.43
+--------------------------------------------
+CISBO-846 Removing empty MileageRestriction.csv
+
+Build 2.1.0.42
+--------------------------------------------
+CISBO-865 Update Unit Test Cases in Post Processor
+
+Build 2.1.0.41
+--------------------------------------------
+CISBO-946 Remove Internal Codes from Extract - 2.1 csv 
+CISBO-943 rename GeographyDetail to RegionDetail.csv
+
+Build 2.1.0.40
+--------------------------------------------
+CISBO-899 Fix to add he product call in Look Up
+
+Build 2.1.0.39
+--------------------------------------------
+CISBO-830 PostProcessor Changes for 2.1
+
+Build 2.1.0.35
+--------------------------------------------
+CISBO-843 Adding codes to the look up tables in extract
+
+Build 2.1.0.34
+--------------------------------------------
+CISBO-849 Rename GeographyId in GeographyDetail.csv
+
+Build 2.1.0.33
+--------------------------------------------
+CISBO-406,CISBO-297 Reference Id changes in new version 2.1
+
+Build 2.1.0.32
+--------------------------------------------
+CISBO-807 Add Copyright to CIS Extract
+
+Build 2.0.3.28
+--------------------------------------------
+PRODUCTFIX-59: Updated SQL Server driver in preparation for SQL Server 2016 upgrade
+
+Build 2.0.2.27
+--------------------------------------------
+CISBO-509: Limited tiers to only return one based on the order indicator in the xml clob.  Also limited sources
+Added in memory filtering from the filter service
+
+Build 2.0.2.26
+--------------------------------------------
+Altered the exit codes 1 and 2.  1 is now warn and 2 is now fatal.
+Altered error logging in Main.  For an error status of 1, main will catch/log/and exit for all Throwables
+
+Build 2.0.2.25
+--------------------------------------------
+CISBO-453: Updated logging for warnings.  Added new exit status of 2.
+
+Build 2.0.2.24
+--------------------------------------------
+CISBO-440: Dealer Certificate Programs in Extract 2.0
+
+Build 2.0.0.23
+--------------------------------------------
+INCWEBSVC-1099: Remove empty lines from end of extract files.
+
+Build 2.0.0.22
+--------------------------------------------
+CISBO-454: Vin specific incentives were not being removed from legacy versions
+
+Build 2.0.0.21
+--------------------------------------------
+CISBO-289: Added product filters to extract
+
+IT NOTE: Added new property to incentives-extract.properties called filter.service.path.  This will need to point to the filter service.
+        Example: filter.service.path=http://localhost:8080/IncentivesFilterService/rest/2.0
+
+Build 2.0.0.20
+--------------------------------------------
+CISBO-441: Added Data Version timestamp to the Version.csv file.  Post processor will remove this field for legacy versions.
+CISBO-389: Added data for percent based incentives.  Updated post processor to remove this data for legacy versions.
+CISBO-450/INCWEBSVS-1052: Cash incentives that have tiers without terms will now have the MSRP value populated on the tier
+
+Build 2.0.0.19
+--------------------------------------------
+CISBO-434: Updated extract to output mileage for mileage restrictions on residual incentives as text instead of integers
+CISBO-446: Stubbed in columns for % based programs.  Updated post processor to remove these columns for legacy versions
+CISBO-447: Added new Data Version column in Version.csv.  Updated post processor to remove these column for legacy versions
+CISBO-443: Stubbed in columns for Dealer Certificate incentive types.  Updated post processor to remove these columns for legacy versions
+
+Build 2.0.0.18
+--------------------------------------------
+CISBO-434: Certain data errors should no longer throw exceptions.  The bad incentive will be skipped and an email will be sent to stakeholders detailing the issue.
+
+IT NOTE: to configure the email notifications, and external log4j2.xml configuration file will need to be passed at
+         runtime.  An example of the SMTP appender can be found in the bundled log4j2.xml configuration file.
+
+Build 2.0.0.17
+--------------------------------------------
+CISBO-277: Replaced MRM changes with new solution
+
+Build 2.0.0.16
+--------------------------------------------
+CISBO-410: vin specific incentives still had vin specific incentive acodes in the Vehicle.csv file
+CISBO-411: vin specific incentives still had vin specific incentive acodes in the VehicleStyle.csv file
+CISBO-414: vin specific incentives still had vin specific incentive stackability in the Stackability.csv file
+CISBO-408: updated mileage restriction processor to remove terms that don't have any values
+
+Build 2.0.0.15
+--------------------------------------------
+Fixed issue where not having any incentives with mileage restrictions caused the post processor to fail
+
+Build 2.0.0.14
+--------------------------------------------
+CISBO-408: Added new mileage restriction processor to repopulate values of term objects
+AOS-1713: Grabbed new thread safe version of EID AOS Model library and made unmarshalling of XML clobs parallel
+
+Build 2.0.0.13
+--------------------------------------------
+CISBO-405: Removed MRM data from 1.3 and 1.4 extract versions.  Added MileageRestrictionFrom/To back into Term file for 1.3 and 1.4.
+Grabbed new version of DSV IO library that will provide better read/write consistency with regard to null/default primitive values.
+
+Build 2.0.0.12
+--------------------------------------------
+Build work.
+
+Build 2.0.0.11
+--------------------------------------------
+Build work.  Updated dist.xml to include required extract dependency for the post processor
+
+Build 2.0.0.10
+--------------------------------------------
+CISBO-385: Updated post processor to exclude vin specific programs for 1.3 & 1.4 extract versions
+
+Build 2.0.0.9
+--------------------------------------------
+INCWEBSVS-1057: Updated post processor to more robustly process csv files instead of simple string functions
+
+Build 2.0.0.8
+--------------------------------------------
+Updated 1.3 version post processor to work with latest extract build version 2.0
+Created 1.4 version post processor to work with latest extract build version 2.0
+
+IT NOTE: Run configuration has been updated.  The post processor needs to be ran once for each legacy version to be created
+    Usage: incentives-extract-post-processor [options]
+      Options:
+      * -extractPath
+           The path to the extract zip.
+        -help
+
+           Default: false
+      * -outPath
+           The path to the outputed extract zip.
+      * -version
+           The version to generate from the main extract output.
+           Possible Values: [ONE_THREE, ONE_FOUR, 1.3, 1.4]
+
+Build 1.4.1.7 (Moved to 2.0.0.7)
+--------------------------------------------
+CISBO-365: Fixed bug causing the geo uid to be used instead of the tax rule id
+
+Build 1.4.1.6 (Moved to 2.0.0.6)
+--------------------------------------------
+CISBO-277: Added MRM incentives
+
+Build 1.4.1.5 (Moved to 2.0.0.5)
+--------------------------------------------
+CISBO-273: Added mileage restrictions to extract output as new external CSV file
+CISBO-282: Added tax rules to incentive.csv and taxrule.csv
+Added a few performance improvements to speed execution time
+
+Build 1.4.0.4
+--------------------------------------------
+INCWEBSVS-1048: Forced line endings to Windows format.  Was previously system specific.
+
+Build 1.4.0.3
+--------------------------------------------
+Fixed typo in jar name in build package: incentives-extract-post-processer.jar -> incentives-extract-post-processor.jar
+INCWEBSVS-1044: Modified Version.csv in post processed extract files
+Forced encoding of extract files to UTF-8
+
+Build 1.4.0.2
+--------------------------------------------
+INCWEBSVS-1044: Additional work, added post-processor component to build output
+
+
+Build 1.4.0.1
+--------------------------------------------
+INCWEBSVS-1044: Added new ordering code field to the output
+
+Build 1.3.3.25
+--------------------------------------------
+Updated group id in pom from com.chromedata to com.chromedata.incentives
+Renamed some classes so there wouldn't be collisions when using extract as a library
+Updated spring-mybatis, mybatis, and logging dependencies in pom to newer version
+INCWEBSVS-1020: Added logging of the incentive id when data issues are encountered when unmarshalling an incentive
+
+Build 1.3.3.24
+--------------------------------------------
+INCWEBSVS-1018: Default to English if other requested language is empty
+
+Build 1.3.3.23
+--------------------------------------------
+INCWEBSVS-1010: Changed the CSV line endings from being system dependent to hard coded as Windows \r\n separators
+
+Build 1.3.3.22
+--------------------------------------------
+INCWEBSVS-999: Round two attempted fix.  Added encoding to output stream writer
+
+Build 1.3.3.21
+--------------------------------------------
+INCWEBSVS-999:  Attempting baseline fix in QA env for UTF-8 encoding
+
+Build 1.3.3.20
+--------------------------------------------
+INCWEBSVS-767: program number in the incentives.csv file will now be qualified
+
+Build 1.3.3.19
+--------------------------------------------
+INCWEBSVS-995: excluded output of files that don't contain any content
+CIS-900: Merged fix over from old Extract codebase
+IT NOTE: Changed the -timeout flag to accept minutes instead of milliseconds
+
+Build 1.3.3.18
+--------------------------------------------
+Added null check for translations coming out of incentive clob
+
+Build 1.3.3.17
+--------------------------------------------
+Modified how properties file is passed to application
+
+Usage: java -Xmx{number}g -Dproperties.path={fully qualified path to properties file} -jar incentives-extract.jar [options]
+  Options:
+    -help
+  * -locale
+       The locale for the data extract.
+  * -responseDir
+       The path to the extract output directory.
+    -timeout
+       Milliseconds before PsychoKiller steps in!
+       Default: 1800000
+
+Example: java -Xmx6g -Dproperties.path=C:/Perforce_Projects/Incentives_Extract/main/src/main/resources/incentives-extract.properties -jar incentives-extract.jar -responseDir "C:\Perforce_Projects\Incentives_Extract\main\Out" -locale "CA_en" -timeout 72000000
+
+
+Build 1.3.3.16
+--------------------------------------------
+First Build
+INCWEBSVS-979: Rewrote the CIS Extract skeleton to perform some necessary technology upgrades to aid with bug fixes

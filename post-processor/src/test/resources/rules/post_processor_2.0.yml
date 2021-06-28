@@ -1,0 +1,102 @@
+- csv: Incentive
+  definition:
+    operation: REMOVE_COLUMNS
+    deleteColumns:
+      - CategoryGroup
+      - MarketID
+      - GroupAffiliationID
+      - PreviousOwnershipID
+      - EndRecipientID
+
+- csv: Incentive
+  definition:
+    operation: RENAME_COLUMNS
+    newColumns:
+    - name: RegionID
+      newName: GeographyID
+
+- csv: VehicleStatus
+  definition:
+    operation: REMOVE_COLUMNS
+    deleteColumns:
+    - VehicleStatusID
+
+- csv: DeliveryType
+  definition:
+    operation: REMOVE_COLUMNS
+    deleteColumns:
+    - DeliveryTypeID
+
+- csv: LURegion
+  definition:
+    operation: RENAME_FILE
+    newFileName: Geography
+
+- csv: Geography
+  definition:
+    operation: RENAME_COLUMNS
+    newColumns:
+    - name: RegionID
+      newName: GeographyID
+
+- csv: RegionDetail
+  definition:
+    operation: RENAME_FILE
+    newFileName: GeographyDetail
+
+- csv: GeographyDetail
+  definition:
+    operation: RENAME_COLUMNS
+    newColumns:
+    - name: RegionID
+      newName: GeographyID
+
+- csv: LUCategory
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUDeliveryType
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUEndRecipient
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUGroupAffiliation
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUInstitution
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUMarket
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUPreviousOwnership
+  definition:
+    operation: REMOVE_FILE
+
+- csv: LUVehicleStatus
+  definition:
+    operation: REMOVE_FILE
+
+- csv: Version
+  definition:
+    operation: REMOVE_COLUMNS
+    deleteColumns:
+    - Copyright
+
+- csv: Version
+  definition:
+    operation: UPDATE_RECORDS
+    updatedValues:
+    - column: Schema Version
+      newValue: 2.0.0
+    criteria:
+    - column: Schema Version
+      condition: EQ
+      values:
+      - 2.1.0

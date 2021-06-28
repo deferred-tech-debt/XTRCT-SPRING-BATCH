@@ -1,0 +1,2 @@
+The files in this folder need to be unlocked to clear the read only flag.  Otherwise when the tests try to copy them
+and manipulate them, errors will be thrown.

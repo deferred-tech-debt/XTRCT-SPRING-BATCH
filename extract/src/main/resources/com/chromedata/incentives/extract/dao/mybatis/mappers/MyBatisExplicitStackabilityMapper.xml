@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chromedata.incentives.extract.dao.mybatis.mappers.MyBatisExplicitStackabilityMapper">
+
+    <cache flushInterval="60000" readOnly="true" size="512"/>
+    <resultMap id="signatureStackabilityResultMap" type="com.chromedata.incentives.extract.dao.model.SignatureStackability">
+        <constructor>
+            <idArg column="SignatureStackabilityUID" javaType="int"/>
+            <arg column="SigHistUID" javaType="int"/>
+            <arg column="ToSigUID" javaType="int"/>
+            <arg column="RelationType" javaType="com.chromedata.incentives.extract.dao.model.RelationType"/>
+            <arg column="ComplexLogic" javaType="String"/>
+        </constructor>
+    </resultMap>
+
+    <select id="getStackabilityList" resultMap="signatureStackabilityResultMap">
+        SELECT Distinct ST01.SignatureStackabilityUID, ST01.SigHistUID, ST01.RelationType,
+        ST01.ToSigUID, ST01.ComplexLogic
+        FROM ST01_SignatureStackability ST01 with (NOLOCK)
+        Where ST01.ToSigUID = #{sigUid}
+    </select>
+
+</mapper>

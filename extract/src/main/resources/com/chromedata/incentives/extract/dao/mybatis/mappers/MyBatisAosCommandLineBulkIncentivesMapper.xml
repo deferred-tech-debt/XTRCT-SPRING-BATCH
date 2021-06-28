@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chromedata.incentives.extract.dao.mybatis.mappers.MyBatisAosCommandLineBulkIncentivesMapper">
+
+    <cache flushInterval="60000" readOnly="true" size="512"/>
+    <resultMap id="BatchGeographyMap" type="com.chromedata.incentives.extract.dao.model.BatchGeography">
+        <constructor>
+            <idArg column="GeoUID" javaType="int"/>
+            <arg column="Description" javaType="String"/>
+            <arg column="CountryCode" javaType="String"/>
+        </constructor>
+        <collection property="zipPostalPatterns" column="{geoUID=GeoUID}"
+                    select="com.chromedata.incentives.extract.dao.mybatis.mappers.MyBatisAosCommandLineBulkIncentivesMapper.getZipPostalPatterns"
+                    fetchType="lazy"/>
+    </resultMap>
+
+    <select id="getVehicleStyles" resultType="java.lang.Integer">
+        Select distinct ei02.Info2 StyleID
+        From EI02_ExtraVehicleInfo (NOLOCK) ei02
+        where ei02.InfoCode = 'CDS'
+        and ei02.Info21 = 'N'
+        and ei02.Acode = #{acode}
+        order by ei02.Info2
+    </select>
+
+    <select id="getGeographies" resultMap="BatchGeographyMap">
+        select distinct rt04.GeoUID,
+        ISNULL(
+        <choose>
+            <when test="languageCode == 'fr'">rt04.Description_FR</when>
+            <otherwise>rt04.Description</otherwise>
+        </choose>, rt04.Description) Description,
+        rt04.CountryCode
+        from RT04_FlexibleGeography (NOLOCK) rt04
+        inner join CT07_Country (NOLOCK) ct07 on ct07.CountryCode = rt04.CountryCode
+        where ct07.CountryCode = #{countryCode}
+        and rt04.GeoUID = #{geoUID}
+    </select>
+
+    <select id="getZipPostalPatterns" resultType="java.lang.String">
+        select distinct gc.ZipPostalPattern
+        from GeographyCache gc
+        where gc.GeoUID = #{geoUID}
+    </select>
+</mapper>

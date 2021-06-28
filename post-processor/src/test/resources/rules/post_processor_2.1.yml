@@ -1,0 +1,18 @@
+- csv: Incentive
+  definition:
+    operation: REMOVE_COLUMNS
+    deleteColumns:
+      - GroupAffiliationDetail
+      - PreviousOwnershipDetail
+
+- csv: Version
+  definition:
+    operation: UPDATE_RECORDS
+    updatedValues:
+      - column: Schema Version
+        newValue: 2.1.0
+    criteria:
+      - column: Schema Version
+        condition: EQ
+        values:
+          - 2.2.0
