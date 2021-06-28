@@ -4,16 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>net.autodata</groupId>
-        <artifactId>autodata-super-pom</artifactId>
-        <version>0.0.0.11</version>
-    </parent>
-
-    <groupId>com.chromedata.incentives</groupId>
-    <artifactId>incentives-extract-parent</artifactId>
+    <groupId>com.contribute</groupId>
+    <artifactId>xtrct-spring-batch-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.1.2</version>
+    <version>1.0</version>
 
     <modules>
         <module>extract</module>

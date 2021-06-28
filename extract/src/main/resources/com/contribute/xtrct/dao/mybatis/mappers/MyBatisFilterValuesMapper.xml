@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contribute.xtrct.dao.mybatis.mappers.MyBatisFilterValuesMapper">
+
+    <cache flushInterval="60000" readOnly="true" size="20"/>
+    <resultMap id="incentiveTypeResultMap" type="com.contribute.xtrct.dao.model.IncentiveType">
+        <constructor>
+            <idArg column="id" javaType="String"/>
+            <arg column="description" javaType="String"/>
+        </constructor>
+    </resultMap>
+
+    <select id="getIncentiveType" parameterType="java.util.Map" resultMap="incentiveTypeResultMap">
+        SELECT incTypeCode as id,
+        ISNULL(
+        <choose>
+            <when test="languageCode == 'fr'">inctypedesc_fr</when>
+            <otherwise>inctypedesc</otherwise>
+        </choose>, inctypedesc) as description
+        FROM CT09_IncentiveType
+        WHERE incTypeCode = #{id}
+    </select>
+
+</mapper>

@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.chromedata.incentives</groupId>
-        <artifactId>incentives-extract-parent</artifactId>
-        <version>3.1.2</version>
+        <groupId>com.contribute</groupId>
+        <artifactId>xtrct-spring-batch-parent</artifactId>
+        <version>1.0</version>
     </parent>
 
-    <artifactId>incentives-extract</artifactId>
+    <artifactId>xtrct-spring-batch</artifactId>
 
     <build>
         <resources>
@@ -18,7 +18,7 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <excludes>
-                    <exclude>incentives-extract.properties</exclude>
+                    <exclude>xtrct.properties</exclude>
                 </excludes>
             </resource>
         </resources>
@@ -110,8 +110,8 @@
                         <configuration>
                             <artifacts>
                                 <artifact>
-                                    <file>src/main/resources/incentives-extract.properties</file>
-                                    <classifier>incentives-extract</classifier>
+                                    <file>src/main/resources/xtrct.properties</file>
+                                    <classifier>xtrct</classifier>
                                     <type>properties</type>
                                 </artifact>
                                 <artifact>

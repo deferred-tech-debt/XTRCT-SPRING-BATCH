@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contribute.xtrct.dao.mybatis.mappers.MyBatisIncentiveMapper">
+
+    <resultMap id="AugmentedIncentiveDataResultMap" type="com.contribute.xtrct.dao.model.AugmentedIncentiveData">
+        <constructor>
+            <idArg column="IncUID" javaType="int"/>
+            <arg column="CellUID" javaType="int"/>
+            <arg column="CountryCode" javaType="String"/>
+            <arg column="YearCode" javaType="String"/>
+            <arg column="YearDesc" javaType="String"/>
+            <arg column="DivCode" javaType="String"/>
+            <arg column="GANote" javaType="String"/>
+            <arg column="PONote" javaType="String"/>
+            <arg column="DateInserted" javaType="java.time.LocalDateTime"/>
+            <arg column="DateUpdated" javaType="java.time.LocalDateTime"/>
+        </constructor>
+        <result property="data" column="Data" javaType="String" />
+
+        <collection property="stackabilities" column="{sigUid=SigUID}"
+                    select="com.contribute.xtrct.dao.mybatis.mappers.MyBatisExplicitStackabilityMapper.getStackabilityList"
+                    fetchType="lazy"/>
+
+        <collection property="vehicles" column="{incUID=IncUID, countryCode=CountryCode, languageCode=LanguageCode}"
+                    select="com.contribute.xtrct.dao.mybatis.mappers.MyBatisVehicleMapper.getVehicles"
+                    fetchType="lazy"/>
+
+        <collection property="geographies" column="{languageCode=LanguageCode, countryCode=CountryCode, geoUID=GeoUID}"
+                    select="com.contribute.xtrct.dao.mybatis.mappers.MyBatisAosCommandLineBulkIncentivesMapper.getGeographies"
+                    fetchType="lazy"/>
+    </resultMap>
+
+    <select id="getCompleteIncentiveData" resultMap="AugmentedIncentiveDataResultMap" parameterType="java.util.HashMap">
+
+        SELECT IT11_IncentiveDataXML.Data2 as Data,
+        FilteredIncUIDs.IncUID as IncUID,
+        FilteredIncUIDs.CellUID as CellUID,
+        FilteredIncUIDs.CountryCode as CountryCode,
+        FilteredIncUIDs.YearCode as YearCode,
+        FilteredIncUIDs.YearDesc as YearDesc,
+        FilteredIncUIDs.DivCode as DivCode,
+        FilteredIncUIDs.GANote as GANote,
+        FilteredIncUIDs.PONote as PONote,
+        FilteredIncUIDs.DateInserted as DateInserted,
+        FilteredIncUIDs.DateUpdated as DateUpdated,
+        FilteredIncUIDs.SigUID as SigUID,
+        FilteredIncUIDs.SigHistUID as SigHistUID,
+        FilteredIncUIDs.GeoUID as GeoUID,
+        #{languageCode} as LanguageCode
+        FROM IT11_IncentiveDataXML
+        INNER JOIN (
+            SELECT DISTINCT IT01_Incentive.IncUID, IT01_Incentive.CellUID, IT01_Incentive.CountryCode, IT01_Incentive.YearCode, CT02_ModelYear.YearDesc,
+            IT01_Incentive.DivCode, IT01_Incentive.GANote, IT01_Incentive.PONote, IT01_Incentive.DateInserted, IT01_Incentive.DateUpdated,
+            IT01_Incentive.SigUID, IT01_Incentive.SigHistUID, IT01_Incentive.GeoUID
+            FROM IT01_Incentive
+            INNER JOIN OT09_IncentiveDeliveryTypes ON IT01_Incentive.IncUID = OT09_IncentiveDeliveryTypes.IncUID
+            INNER JOIN CT02_ModelYear ON IT01_Incentive.YearCode = CT02_ModelYear.YearCode
+            INNER JOIN OT08_IncentiveVehicleStatus ON IT01_Incentive.incUID = OT08_IncentiveVehicleStatus.IncUID
+            INNER JOIN CT08_Category ON IT01_Incentive.CatID = CT08_Category.CatID
+            INNER JOIN VT07_IncentiveAcodes ON IT01_Incentive.IncUID = VT07_IncentiveAcodes.IncUID
+            WHERE IT01_Incentive.CountryCode = #{countryCode}
+
+            <if test="filterSql != null and filterSql != ''">
+                AND ${filterSql}
+            </if>
+            AND CAST(GetDate() AS DATE) &gt;= CAST(IT01_Incentive.StartDateUID AS DATE)
+            AND CAST(GetDate() AS DATE) &lt;= CAST(IT01_Incentive.EndDateUID AS DATE)
+        ) AS FilteredIncUIDs ON FilteredIncUIDs.IncUID = IT11_IncentiveDataXML.IncUID
+
+        ORDER BY IncUID
+        OFFSET (${_skiprows}) ROWS
+        FETCH NEXT #{_pagesize} ROWS ONLY;
+
+    </select>
+
+</mapper>

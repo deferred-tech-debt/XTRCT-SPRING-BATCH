@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.chromedata.incentives</groupId>
-        <artifactId>incentives-extract-parent</artifactId>
-        <version>3.1.2</version>
+        <groupId>com.contribute</groupId>
+        <artifactId>xtrct-spring-batch-parent</artifactId>
+        <version>1.0</version>
     </parent>
 
-    <artifactId>incentives-extract-post-processor</artifactId>
+    <artifactId>xtrct-post-processor</artifactId>
 
     <build>
         <plugins>
@@ -36,7 +36,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.chromedata.incentives.extract.postprocess.Main</mainClass>
+                            <mainClass>com.contribute.xtrct.postprocess.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Implementation-Title>Incentives-Extract</Implementation-Title>

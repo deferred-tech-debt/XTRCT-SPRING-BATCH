@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.contribute.xtrct.dao.mybatis.mappers.MyBatisVehicleMapper">
+
+    <cache flushInterval="60000" readOnly="true" size="512"/>
+    <resultMap id="batchVehicleResultMap" type="com.contribute.xtrct.dao.model.Vehicle">
+        <constructor>
+            <idArg column="Acode" javaType="String"/>
+            <arg column="CountryCode" javaType="String"/>
+            <arg column="ModelYear" javaType="String"/>
+            <arg column="Division" javaType="String"/>
+            <arg column="Model" javaType="String"/>
+            <arg column="Trim" javaType="String"/>
+            <arg column="Variation" javaType="String"/>
+        </constructor>
+
+        <collection property="vehicleStyles" column="{acode=Acode}"
+                    select="com.contribute.xtrct.dao.mybatis.mappers.MyBatisAosCommandLineBulkIncentivesMapper.getVehicleStyles"
+                    fetchType="lazy"/>
+    </resultMap>
+
+    <select id="getVehicles" resultMap="batchVehicleResultMap">
+        SELECT DISTINCT VT02.Acode AS Acode, RTRIM(#{countryCode}) AS CountryCode, SUBSTRING(LTrim(RTrim(VT02.YearDesc)), 1, 4) AS ModelYear,
+                        RTRIM(VT02.DivDesc) AS Division, RTRIM(VT02.ModelDesc) AS Model, VT02.Trim, RTRIM(VT02.Variation) AS Variation
+        FROM VT02_Vehicle_Language VT02 inner join VT07_IncentiveAcodes VT07 on VT07.Acode = VT02.Acode
+        WHERE VT02.LngCode = #{languageCode}
+        AND VT07.IncUID = #{incUID}
+    </select>
+</mapper>
